@@ -67,12 +67,6 @@ public class HelloServiceImpl2 implements HelloService {
 发布服务(使用 Netty 进行传输)：
 
 ```java
-/**
- * Server: Automatic registration service via @RpcService annotation
- *
- * @author shuang.kou
- * @createTime 2020年05月10日 07:25:00
- */
 @RpcScan(basePackage = {"github.ancientmoon.serviceimpl"})
 public class NettyServerMain {
     public static void main(String[] args) {
