@@ -1,0 +1,2 @@
+netty=github.ancientmoon.remoting.transport.netty.client.NettyRpcClient
+socket=github.ancientmoon.remoting.transport.socket.SocketRpcClient

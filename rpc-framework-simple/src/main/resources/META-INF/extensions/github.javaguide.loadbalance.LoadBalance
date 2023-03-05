@@ -1,0 +1,1 @@
+loadBalance=github.ancientmoon.loadbalance.loadbalancer.ConsistentHashLoadBalance

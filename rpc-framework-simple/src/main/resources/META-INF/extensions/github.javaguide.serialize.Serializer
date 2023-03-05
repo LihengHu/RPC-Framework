@@ -1,0 +1,3 @@
+kyro=github.ancientmoon.serialize.kyro.KryoSerializer
+protostuff=github.ancientmoon.serialize.protostuff.ProtostuffSerializer
+hessian=github.ancientmoon.serialize.hessian.HessianSerializer
