@@ -9,12 +9,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 
-/**
- * When the server  is closed, do something such as unregister all services
- *
- * @author shuang.kou
- * @createTime 2020年06月04日 13:11:00
- */
+
 @Slf4j
 public class CustomShutdownHook {
     private static final CustomShutdownHook CUSTOM_SHUTDOWN_HOOK = new CustomShutdownHook();

@@ -12,12 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-/**
- * Kryo serialization class, Kryo serialization efficiency is very high, but only compatible with Java language
- *
- * @author shuang.kou
- * @createTime 2020年05月13日 19:29:00
- */
+
 @Slf4j
 public class KryoSerializer implements Serializer {
 

@@ -3,12 +3,7 @@ package github.ancientmoon.remoting.transport;
 import github.ancientmoon.extension.SPI;
 import github.ancientmoon.remoting.dto.RpcRequest;
 
-/**
- * send RpcRequest。
- *
- * @author shuang.kou
- * @createTime 2020年05月29日 13:26:00
- */
+
 @SPI
 public interface RpcRequestTransport {
     /**

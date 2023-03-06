@@ -7,12 +7,7 @@ import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * store and get Channel object
- *
- * @author shuang.kou
- * @createTime 2020年05月29日 16:36:00
- */
+
 @Slf4j
 public class ChannelProvider {
 

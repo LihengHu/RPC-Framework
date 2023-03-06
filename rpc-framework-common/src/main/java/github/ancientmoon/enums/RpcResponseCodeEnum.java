@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-/**
- * @author shuang.kou
- * @createTime 2020年05月12日 16:24:00
- */
+
 @AllArgsConstructor
 @Getter
 @ToString

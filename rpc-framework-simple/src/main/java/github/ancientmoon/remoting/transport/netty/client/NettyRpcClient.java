@@ -34,12 +34,7 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-/**
- * initialize and close Bootstrap object
- *
- * @author shuang.kou
- * @createTime 2020年05月29日 17:51:00
- */
+
 @Slf4j
 public final class NettyRpcClient implements RpcRequestTransport {
     private final ServiceDiscovery serviceDiscovery;

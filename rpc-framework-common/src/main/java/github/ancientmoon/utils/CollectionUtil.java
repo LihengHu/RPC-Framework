@@ -5,8 +5,6 @@ import java.util.Collection;
 /**
  * 集合工具类
  *
- * @author zhanghua
- * @createTime 2022/3/6 12:58 上午
  */
 public class CollectionUtil {
 

@@ -10,10 +10,7 @@ import lombok.ToString;
 
 import java.io.Serializable;
 
-/**
- * @author shuang.kou
- * @createTime 2020年05月12日 16:15:00
- */
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

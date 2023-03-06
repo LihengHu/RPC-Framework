@@ -5,10 +5,7 @@ import github.ancientmoon.proxy.RpcClientProxy;
 import github.ancientmoon.remoting.transport.RpcRequestTransport;
 import github.ancientmoon.remoting.transport.socket.SocketRpcClient;
 
-/**
- * @author shuang.kou
- * @createTime 2020年05月10日 07:25:00
- */
+
 public class SocketClientMain {
     public static void main(String[] args) {
         RpcRequestTransport rpcRequestTransport = new SocketRpcClient();

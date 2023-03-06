@@ -10,12 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**
- * RpcRequest processor
- *
- * @author shuang.kou
- * @createTime 2020年05月13日 09:05:00
- */
+
 @Slf4j
 public class RpcRequestHandler {
     private final ServiceProvider serviceProvider;

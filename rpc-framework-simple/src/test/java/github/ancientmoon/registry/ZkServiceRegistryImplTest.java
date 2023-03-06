@@ -14,10 +14,6 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-/**
- * @author shuang.kou
- * @createTime 2020年05月31日 16:25:00
- */
 class ZkServiceRegistryImplTest {
 
     @Test

@@ -35,9 +35,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  * body（object类型数据）
  * </pre>
  *
- * @author WangTao
- * @createTime on 2020/10/2
- * @see <a href="https://zhuanlan.zhihu.com/p/95621344">LengthFieldBasedFrameDecoder解码器</a>
  */
 
 @Slf4j

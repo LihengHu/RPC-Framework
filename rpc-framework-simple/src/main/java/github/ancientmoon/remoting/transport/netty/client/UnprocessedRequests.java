@@ -6,12 +6,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * unprocessed requests by the server.
- *
- * @author shuang.kou
- * @createTime 2020年06月04日 17:30:00
- */
+
 public class UnprocessedRequests {
     private static final Map<String, CompletableFuture<RpcResponse<Object>>> UNPROCESSED_RESPONSE_FUTURES = new ConcurrentHashMap<>();
 

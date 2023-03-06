@@ -12,12 +12,7 @@ import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.core.type.StandardAnnotationMetadata;
 import org.springframework.stereotype.Component;
 
-/**
- * scan and filter specified annotations
- *
- * @author shuang.kou
- * @createTime 2020年08月10日 22:12:00
- */
+
 @Slf4j
 public class CustomScannerRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware {
     private static final String SPRING_BEAN_BASE_PACKAGE = "github.javaguide";

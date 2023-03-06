@@ -3,9 +3,7 @@ package github.ancientmoon;
 import github.ancientmoon.annotation.RpcReference;
 import org.springframework.stereotype.Component;
 
-/**
- * @author smile2coder
- */
+
 @Component
 public class HelloController {
 

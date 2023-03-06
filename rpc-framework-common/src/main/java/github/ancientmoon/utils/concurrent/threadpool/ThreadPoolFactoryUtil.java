@@ -13,12 +13,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-/**
- * 创建 ThreadPool(线程池) 的工具类.
- *
- * @author shuang.kou
- * @createTime 2020年05月26日 16:00:00
- */
+
 @Slf4j
 public final class ThreadPoolFactoryUtil {
 

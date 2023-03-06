@@ -5,12 +5,7 @@ import github.ancientmoon.remoting.transport.netty.server.NettyRpcServer;
 import github.ancientmoon.serviceimpl.HelloServiceImpl2;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-/**
- * Server: Automatic registration service via @RpcService annotation
- *
- * @author shuang.kou
- * @createTime 2020年05月10日 07:25:00
- */
+
 @RpcScan(basePackage = {"github.ancientmoon"})
 public class NettyServerMain {
     public static void main(String[] args) {
