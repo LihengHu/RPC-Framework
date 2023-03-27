@@ -1,6 +1,9 @@
 package github.ancientmoon.utils;
 
-
+/**
+ * @author hty
+ * @createTime 2020年09月18日 15:43:00
+ */
 public class RuntimeUtil {
     /**
      * 获取CPU的核心数
