@@ -1,4 +1,4 @@
-package github.ancientmoon.serialize.hessian;
+package github.ancientmoon.serialize.protostuff;
 
 import github.ancientmoon.remoting.dto.RpcRequest;
 import org.junit.jupiter.api.Test;
@@ -7,10 +7,10 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class HessianSerializerTest {
+public class ProtostuffSerializerTest {
 
     @Test
-    public void hessianSerializerTest() {
+    public void protostuffSerializerTest(){
         RpcRequest target = RpcRequest.builder().methodName("hello")
                 .parameters(new Object[]{"sayhelooloo", "sayhelooloosayhelooloo"})
                 .interfaceName("github.ancientmoon.HelloService")
@@ -19,10 +19,10 @@ class HessianSerializerTest {
                 .group("group1")
                 .version("version1")
                 .build();
-        HessianSerializer hessianSerializer = new HessianSerializer();
+        ProtostuffSerializer protostuffSerializer = new ProtostuffSerializer();
         long stime = System.currentTimeMillis();
-        byte[] bytes = hessianSerializer.serialize(target);
-        RpcRequest actual = hessianSerializer.deserialize(bytes, RpcRequest.class);
+        byte[] bytes = protostuffSerializer.serialize(target);
+        RpcRequest actual = protostuffSerializer.deserialize(bytes, RpcRequest.class);
         long etime = System.currentTimeMillis();
         System.out.println(etime-stime);
         assertEquals(target.getGroup(), actual.getGroup());

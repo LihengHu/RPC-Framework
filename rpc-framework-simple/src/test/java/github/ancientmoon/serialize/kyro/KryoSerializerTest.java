@@ -20,8 +20,11 @@ class KryoSerializerTest {
                 .version("version1")
                 .build();
         KryoSerializer kryoSerializer = new KryoSerializer();
+        long stime = System.currentTimeMillis();
         byte[] bytes = kryoSerializer.serialize(target);
         RpcRequest actual = kryoSerializer.deserialize(bytes, RpcRequest.class);
+        long etime = System.currentTimeMillis();
+        System.out.println(etime-stime);
         assertEquals(target.getGroup(), actual.getGroup());
         assertEquals(target.getVersion(), actual.getVersion());
         assertEquals(target.getRequestId(), actual.getRequestId());
