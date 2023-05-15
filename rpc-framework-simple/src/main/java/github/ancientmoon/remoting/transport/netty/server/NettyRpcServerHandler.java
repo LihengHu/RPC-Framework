@@ -33,7 +33,9 @@ public class NettyRpcServerHandler extends ChannelInboundHandlerAdapter {
         try {
             if (msg instanceof RpcMessage) {
                 log.info("server receive msg: [{}] ", msg);
+                //请求类型
                 byte messageType = ((RpcMessage) msg).getMessageType();
+                //返回的RpcMessage
                 RpcMessage rpcMessage = new RpcMessage();
                 rpcMessage.setCodec(SerializationTypeEnum.HESSIAN.getCode());
                 rpcMessage.setCompress(CompressTypeEnum.GZIP.getCode());
