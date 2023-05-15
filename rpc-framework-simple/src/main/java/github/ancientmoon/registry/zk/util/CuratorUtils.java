@@ -62,14 +62,18 @@ public final class CuratorUtils {
      * @return All child nodes under the specified node
      */
     public static List<String> getChildrenNodes(CuratorFramework zkClient, String rpcServiceName) {
+        //本地缓存
         if (SERVICE_ADDRESS_MAP.containsKey(rpcServiceName)) {
             return SERVICE_ADDRESS_MAP.get(rpcServiceName);
         }
+        //无本地缓存，从zookeeper中获取
         List<String> result = null;
         String servicePath = ZK_REGISTER_ROOT_PATH + "/" + rpcServiceName;
         try {
             result = zkClient.getChildren().forPath(servicePath);
+            //存入缓存中
             SERVICE_ADDRESS_MAP.put(rpcServiceName, result);
+            //注册watch
             registerWatcher(rpcServiceName, zkClient);
         } catch (Exception e) {
             log.error("get children nodes for path [{}] fail", servicePath);
@@ -130,7 +134,11 @@ public final class CuratorUtils {
         PathChildrenCache pathChildrenCache = new PathChildrenCache(zkClient, servicePath, true);
         PathChildrenCacheListener pathChildrenCacheListener = (curatorFramework, pathChildrenCacheEvent) -> {
             List<String> serviceAddresses = curatorFramework.getChildren().forPath(servicePath);
-            SERVICE_ADDRESS_MAP.put(rpcServiceName, serviceAddresses);
+            if((serviceAddresses == null || serviceAddresses.size() == 0) && SERVICE_ADDRESS_MAP.containsKey(rpcServiceName)){
+                SERVICE_ADDRESS_MAP.remove(rpcServiceName);
+            }else {
+                SERVICE_ADDRESS_MAP.put(rpcServiceName, serviceAddresses);
+            }
         };
         pathChildrenCache.getListenable().addListener(pathChildrenCacheListener);
         pathChildrenCache.start();
