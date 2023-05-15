@@ -5,6 +5,8 @@ import github.ancientmoon.HelloService;
 import github.ancientmoon.annotation.RpcService;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Random;
+
 
 @Slf4j
 @RpcService(group = "test1", version = "version1")

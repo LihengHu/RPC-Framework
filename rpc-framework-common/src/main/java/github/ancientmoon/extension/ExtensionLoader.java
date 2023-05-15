@@ -67,7 +67,6 @@ public final class ExtensionLoader<T> {
             synchronized (holder) {
                 instance = holder.get();
                 if (instance == null) {
-                    System.out.println(name);
                     instance = createExtension(name);
                     holder.set(instance);
                 }

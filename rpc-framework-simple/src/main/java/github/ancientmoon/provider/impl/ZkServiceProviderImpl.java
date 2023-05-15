@@ -60,6 +60,8 @@ public class ZkServiceProviderImpl implements ServiceProvider {
         try {
             String host = InetAddress.getLocalHost().getHostAddress();
             this.addService(rpcServiceConfig);
+            //在zookeeper中创建节点，节点名为服务名+组名+版本号
+            System.out.println(rpcServiceConfig.getServiceName());
             serviceRegistry.registerService(rpcServiceConfig.getRpcServiceName(), new InetSocketAddress(host, NettyRpcServer.PORT));
         } catch (UnknownHostException e) {
             log.error("occur exception when getHostAddress", e);

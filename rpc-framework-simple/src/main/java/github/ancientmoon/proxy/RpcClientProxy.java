@@ -17,6 +17,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 
 @Slf4j
@@ -68,12 +70,37 @@ public class RpcClientProxy implements InvocationHandler {
                 .build();
         RpcResponse<Object> rpcResponse = null;
         if (rpcRequestTransport instanceof NettyRpcClient) {
-            CompletableFuture<RpcResponse<Object>> completableFuture = (CompletableFuture<RpcResponse<Object>>) rpcRequestTransport.sendRpcRequest(rpcRequest);
-            rpcResponse = completableFuture.get();
+            // 超时时间
+            long timeout = 5000;
+            // 最大重试次数
+            int maxRetries = 3;
+            // 发送 RPC 请求并获取 CompletableFuture 对象
+            CompletableFuture<RpcResponse<Object>> future = (CompletableFuture<RpcResponse<Object>>) rpcRequestTransport.sendRpcRequest(rpcRequest);
+            int retryCount = 0;
+            while (retryCount < maxRetries) {
+                try {
+                    // 等待异步调用结果
+                    rpcResponse = future.get(timeout, TimeUnit.MILLISECONDS);
+                    break;
+                } catch (TimeoutException e) {
+                    // 超时异常处理
+                    log.error("超时重试");
+                    future = (CompletableFuture<RpcResponse<Object>>) rpcRequestTransport.sendRpcRequest(rpcRequest);
+                    retryCount++;
+                } catch (Exception e) {
+                    // 其他异常处理
+                    System.err.println("发生异常：" + e.getMessage());
+                    // 打印堆栈跟踪信息
+                    e.printStackTrace();
+                }
+            }
+//            CompletableFuture<RpcResponse<Object>> completableFuture = (CompletableFuture<RpcResponse<Object>>) rpcRequestTransport.sendRpcRequest(rpcRequest);
+//            rpcResponse = completableFuture.get();
         }
         if (rpcRequestTransport instanceof SocketRpcClient) {
             rpcResponse = (RpcResponse<Object>) rpcRequestTransport.sendRpcRequest(rpcRequest);
         }
+        //对结果进行处理和验证
         this.check(rpcResponse, rpcRequest);
         return rpcResponse.getData();
     }

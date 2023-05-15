@@ -44,14 +44,21 @@ public class RpcMessageEncoder extends MessageToByteEncoder<RpcMessage> {
     @Override
     protected void encode(ChannelHandlerContext ctx, RpcMessage rpcMessage, ByteBuf out) {
         try {
+            //魔数 4B
             out.writeBytes(RpcConstants.MAGIC_NUMBER);
+            //版本号 1B
             out.writeByte(RpcConstants.VERSION);
             // leave a place to write the value of full length
+            //留4字节写消息长度
             out.writerIndex(out.writerIndex() + 4);
             byte messageType = rpcMessage.getMessageType();
+            //消息类型
             out.writeByte(messageType);
+            //序列化类型
             out.writeByte(rpcMessage.getCodec());
+            //压缩类型
             out.writeByte(CompressTypeEnum.GZIP.getCode());
+            //请求id
             out.writeInt(ATOMIC_INTEGER.getAndIncrement());
             // build full length
             byte[] bodyBytes = null;
@@ -62,6 +69,7 @@ public class RpcMessageEncoder extends MessageToByteEncoder<RpcMessage> {
                 // serialize the object
                 String codecName = SerializationTypeEnum.getName(rpcMessage.getCodec());
                 log.info("codec name: [{}] ", codecName);
+                //通过codecName从SPI中得到对应的编解码器（Kryo），kryo对Message的Data进行序列化（RpcRequest）
                 Serializer serializer = ExtensionLoader.getExtensionLoader(Serializer.class)
                         .getExtension(codecName);
                 bodyBytes = serializer.serialize(rpcMessage.getData());
